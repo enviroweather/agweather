@@ -1,0 +1,41 @@
+name: Publish build/ to agweather-build
+
+# Mirrors the contents of build/ (committed on this branch) to the root of
+# the separate enviroweather/agweather-build repo. Does NOT run pnpm/vite -
+# the build/ folder must already be built and committed before pushing here.
+on:
+  push:
+    branches:
+      - production
+  workflow_dispatch: {}
+
+concurrency:
+  group: publish-build
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  publish-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout production branch
+        uses: actions/checkout@v4
+
+      - name: Verify build output exists
+        run: |
+          test -d build || { echo "::error::No build/ folder on this branch - commit a built site before pushing to production."; exit 1; }
+          test -f build/index.html || { echo "::error::build/index.html missing."; exit 1; }
+          test -f build/api/forecast-proxy.php || { echo "::error::build/api/forecast-proxy.php missing."; exit 1; }
+
+      - name: Push build/ contents to agweather-build repo
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: ${{ secrets.AGWEATHER_BUILD_DEPLOY_KEY }}
+          external_repository: enviroweather/agweather-build
+          publish_branch: main
+          publish_dir: ./build
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
+          commit_message: "Deploy build from enviroweather/agweather@${{ github.sha }}"
