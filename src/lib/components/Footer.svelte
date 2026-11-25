@@ -71,6 +71,6 @@
 
     <div class="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-3">
         <p>&copy; 2026 Michigan State University Board of Trustees</p>
-        <p class="text-slate-400">WCAG 2.2 Compliant • MSU Web Standards</p>
+        <p class="text-slate-700">WCAG 2.2 Compliant • MSU Web Standards</p>
     </div>
 </footer>

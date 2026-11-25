@@ -227,7 +227,7 @@
                     <div class="text-lg font-extrabold text-msu-dark mt-1">
                         {#if summaryStats && summaryStats.minTemp !== null && summaryStats.maxTemp !== null}
                             <span class="text-blue-700">{Math.round(summaryStats.minTemp)}°{forecast.units.temperature}</span>
-                            <span class="text-slate-400 font-normal mx-1">to</span>
+                            <span class="text-slate-700 font-normal mx-1">to</span>
                             <span class="text-emerald-800">{Math.round(summaryStats.maxTemp)}°{forecast.units.temperature}</span>
                         {:else}
                             N/A
@@ -363,7 +363,7 @@
                                                 {Math.round(entry.temperature)}°
                                             </span>
                                         {:else}
-                                            <span class="text-slate-400">—</span>
+                                            <span class="text-slate-700">—</span>
                                         {/if}
                                     </td>
 
@@ -374,7 +374,7 @@
                                                 {Math.round(entry.max_min_temperature_12h)}°
                                             </span>
                                         {:else}
-                                            <span class="text-slate-400">&nbsp;</span>
+                                            <span class="text-slate-700">&nbsp;</span>
                                         {/if}
                                     </td>
 
@@ -390,7 +390,7 @@
                                                 {Math.round(entry.relative_humidity)}%
                                             </span>                                        
                                         {:else}
-                                            <span class="text-slate-400">—</span>
+                                            <span class="text-slate-700">—</span>
                                         {/if}
                                     </td>
 
@@ -402,7 +402,7 @@
                                             </span>
                                             <span class="text-[11px] text-slate-500">mph</span>
                                         {:else}
-                                            <span class="text-slate-400">—</span>
+                                            <span class="text-slate-700">—</span>
                                         {/if}
                                     </td>
 
@@ -424,7 +424,7 @@
                                     <td class="py-2.5 px-2 text-center whitespace-nowrap font-semibold">
                                         {#if entry.precipitation_probability_6h !== null}
                                             {@const prob = Math.round(entry.precipitation_probability_6h)}
-                                            <span class={prob >= 50 ? 'text-emerald-800 font-extrabold bg-emerald-100 px-1.5 py-0.5 rounded' : prob > 0 ? 'text-emerald-700' : 'text-slate-400'}>
+                                            <span class={prob >= 50 ? 'text-emerald-800 font-extrabold bg-emerald-100 px-1.5 py-0.5 rounded' : prob > 0 ? 'text-emerald-700' : 'text-slate-700'}>
                                                 {prob}%
                                             </span>
                                         {:else}
@@ -439,7 +439,7 @@
                                                 {entry.precipitation_amount_6h.toFixed(2)}"
                                             </span>
                                         {:else if entry.precipitation_amount_6h === 0}
-                                            <span class="text-slate-400">0.00"</span>
+                                            <span class="text-slate-700">0.00"</span>
                                         {:else}
                                             <span class="text-slate-700">—</span>
                                         {/if}
