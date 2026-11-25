@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Nav from "$lib/components/Nav.svelte";
+	import MichiganIcon from '$lib/icons/MichiganIcon.svelte'
+
 	import { base } from '$app/paths';
 	let { pageTitle = 'Agricultural Weather Office' }: { pageTitle?: string } = $props();
 </script>
@@ -85,7 +87,7 @@
 			<!-- Actions & Mobile Hamburger -->
 			<div class="flex items-center gap-2 sm:gap-3 shrink-0">
 				<a href="https://enviroweather.msu.edu" class="btn btn-outline btn-sm border-msu-green text-msu-green hover:bg-msu-green hover:border-msu-green hover:text-white font-semibold hidden lg:inline-flex">
-				<svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+				<MichiganIcon />
 				Enviroweather
 				</a>
 				
