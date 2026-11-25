@@ -206,6 +206,7 @@
             </div>
         {/if}
 
+
         <!-- FORECAST CONTENT -->
         {#if forecast}
             <!-- STATION METADATA & SUMMARY CARDS -->
@@ -220,6 +221,7 @@
                     </div>
                 </div>
 
+                <!-- some summary numbers, don't really need these -->
                 <!-- <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                     <div class="text-xs font-bold uppercase tracking-wider text-slate-500">60h Temp Range</div>
                     <div class="text-lg font-extrabold text-msu-dark mt-1">
@@ -242,6 +244,7 @@
                     <div class="text-xs text-slate-500 mt-0.5">Highest 6h chance of rain</div>
                 </div> -->
 
+                <!-- when was it pulled? -->
                 <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                     <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Model Run Time</div>
                     <div class="text-xs font-semibold text-slate-800 mt-1">
@@ -250,6 +253,7 @@
                     <div class="text-[11px] text-slate-500 mt-0.5">Source: NBM / MAWN Server</div>
                 </div>
 
+                <!-- PLAIN TEXT LINK -->
                 <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                     <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Legacy</div>
                     <div class="text-xs font-semibold text-slate-800 mt-1">
@@ -266,6 +270,7 @@
                     <div class="text-[11px] text-slate-500 mt-0.5">MAWN Server</div>
                 </div>
 
+                <!-- JSON LINK -->
                 <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                     <div class="text-xs font-bold uppercase tracking-wider text-slate-500">API</div>
                     <div class="text-xs font-semibold text-slate-800 mt-1">
@@ -285,7 +290,7 @@
 
             </div>
 
-            <!-- ACCESSIBLE FORECAST TABLE -->
+<!--        FORECAST headers -->
             <section aria-labelledby="forecast-table-heading" class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
                 <div class="p-4 sm:p-6 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
@@ -313,22 +318,25 @@
 
                 <!-- Responsive Table Wrapper -->
                 <div class="overflow-x-auto">
-                    <table class="table table-zebra table-sm w-full text-left" aria-describedby="forecast-table-heading">
+
+<!-- -------------------------------------------------------- -->                    
+                    <!-- ACTUAL TABLE -->
+                    <table id="60-hour-forecast-table-{data.currentStation.code}" class="table table-xs table-zebra table-sm w-full text-left table-pin-rows table-pin-cols" aria-describedby="forecast-table-heading">
                         <caption class="sr-only">
                             60-hour detailed agricultural weather forecast for {data.currentStation.name} in 3-hour intervals
                         </caption>
                         <thead class="bg-slate-100 text-slate-800 text-xs font-bold border-b border-slate-300">
                             <tr>
-                                <th scope="col" class="py-3 px-3">Date / Time (ET)</th>
-                                <th scope="col" class="py-3 px-2 text-right">Temp 3H(°{forecast.units.temperature})</th>
-                                <th scope="col" class="py-3 px-2 text-right">Min/Max temp(°{forecast.units.temperature})</th>								
-                                <th scope="col" class="py-3 px-2 text-right">Dew Pt (°{forecast.units.temperature})</th>
-                                <th scope="col" class="py-3 px-2 text-right">RH (%)</th>
-                                <th scope="col" class="py-3 px-3">Wind ({forecast.units.wind_speed})</th>
-                                <th scope="col" class="py-3 px-3">Cloud Coverage (%)</th>
-                                <th scope="col" class="py-3 px-2 text-right">6h Precip Prob</th>
-                                <th scope="col" class="py-3 px-2 text-right">6h Amount</th>
-                                <th scope="col" class="py-3 px-2 text-right">6h T-Storm</th>
+                                <th scope="col" class="whitespace-normal">Date / Time (ET)</th> 
+                                <th scope="col" class="whitespace-normal text-center">Temp 3H (°{forecast.units.temperature})</th> 
+                                <th scope="col" class="whitespace-normal text-center">Min/Max temp (°{forecast.units.temperature})</th>	
+                                <th scope="col" class="whitespace-normal text-center">Dew Pt (°{forecast.units.temperature})</th> 
+                                <th scope="col" class="whitespace-normal text-center">RH (%)</th> 
+                                <th scope="col" class="whitespace-normal ">Wind ({forecast.units.wind_speed})</th> 
+                                <th scope="col" class="whitespace-normal ">Cloud Coverage (%)</th>  
+                                <th scope="col" class="whitespace-normal text-center">6h Precip Probability</th> 
+                                <th scope="col" class="whitespace-normal text-center">6h Precip Amount</th> 
+                                <th scope="col" class="whitespace-normal text-center">6h T-storm Probability</th> 
                             </tr>
                         </thead>
                         <tbody class="text-xs divide-y divide-slate-200 font-medium text-slate-700">
@@ -337,7 +345,8 @@
                             {#each forecast.forecasts as entry, idx (entry.valid_at || idx)}
                                 {@const { dateStr, timeStr } = formatDateTime(entry.valid_at)}
                                 
-                                <tr class="hover:bg-emerald-50/60 transition-colors">
+                                <!-- ROW -->
+                                <tr class="hover:bg-emerald-50/60 transition-colors" id="3hr-forecast-{dateStr}-{timeStr}">
                                     <!-- Valid Time -->
                                     <th scope="row" class="font-semibold text-slate-900 whitespace-nowrap py-2.5 px-3">
                                         {#if dateStr != currDate }
@@ -348,7 +357,7 @@
                                     </th>
 
                                     <!-- Temperature -->
-                                    <td class="py-2.5 px-2 text-right whitespace-nowrap font-bold text-slate-900">
+                                    <td class="py-2.5 px-2 text-center whitespace-nowrap font-bold text-slate-900">
                                         {#if entry.temperature !== null}
                                             <span class={entry.temperature <= 32 ? 'text-blue-700 font-extrabold' : entry.temperature >= 85 ? 'text-amber-700 font-extrabold' : 'text-slate-900'}>
                                                 {Math.round(entry.temperature)}°
@@ -359,7 +368,7 @@
                                     </td>
 
                                     <!-- max_min_temperature_12h -->	
-                                    <td class="py-2.5 px-2 text-right whitespace-nowrap font-bold text-slate-900">
+                                    <td class="py-2.5 px-2 text-center whitespace-nowrap font-bold text-slate-900">
                                         {#if entry.max_min_temperature_12h !== null}
                                             <span class="text-slate-900">
                                                 {Math.round(entry.max_min_temperature_12h)}°
@@ -370,16 +379,16 @@
                                     </td>
 
                                     <!-- Dew Point -->
-                                    <td class="py-2.5 px-2 text-right whitespace-nowrap text-slate-600">
+                                    <td class="py-2.5 px-2 text-center whitespace-nowrap text-slate-600">
                                         {entry.dew_point !== null ? `${Math.round(entry.dew_point)}°` : '—'}
                                     </td>
 
                                     <!-- Relative Humidity -->
-                                    <td class="py-2.5 px-2 text-right whitespace-nowrap">
+                                    <td class="py-2.5 px-2 text-center whitespace-nowrap">
                                         {#if entry.relative_humidity !== null}
                                             <span class={entry.relative_humidity >= 85 ? 'font-bold text-emerald-800' : 'text-slate-600'}>
                                                 {Math.round(entry.relative_humidity)}%
-                                            </span>
+                                            </span>                                        
                                         {:else}
                                             <span class="text-slate-400">—</span>
                                         {/if}
@@ -412,7 +421,7 @@
                                     </td>
 
                                     <!-- 6h Precip Probability -->
-                                    <td class="py-2.5 px-2 text-right whitespace-nowrap font-semibold">
+                                    <td class="py-2.5 px-2 text-center whitespace-nowrap font-semibold">
                                         {#if entry.precipitation_probability_6h !== null}
                                             {@const prob = Math.round(entry.precipitation_probability_6h)}
                                             <span class={prob >= 50 ? 'text-emerald-800 font-extrabold bg-emerald-100 px-1.5 py-0.5 rounded' : prob > 0 ? 'text-emerald-700' : 'text-slate-400'}>
@@ -424,7 +433,7 @@
                                     </td>
 
                                     <!-- 6h Precip Amount -->
-                                    <td class="py-2.5 px-2 text-right whitespace-nowrap">
+                                    <td class="py-2.5 px-2 text-center whitespace-nowrap">
                                         {#if entry.precipitation_amount_6h !== null && entry.precipitation_amount_6h > 0}
                                             <span class="font-bold text-emerald-900">
                                                 {entry.precipitation_amount_6h.toFixed(2)}"
@@ -437,7 +446,7 @@
                                     </td>
 
                                     <!-- 6h Thunderstorm Probability -->
-                                    <td class="py-2.5 px-2 text-right whitespace-nowrap">
+                                    <td class="py-2.5 px-2 text-center whitespace-nowrap">
                                         {#if entry.thunderstorm_probability_6h !== null && entry.thunderstorm_probability_6h > 0}
                                             <span class="text-amber-800 font-bold bg-amber-50 px-1.5 py-0.5 rounded">
                                                 {Math.round(entry.thunderstorm_probability_6h)}%
@@ -450,6 +459,9 @@
                             {/each}
                         </tbody>
                     </table>
+<!-- -------------------------------------------------------- -->                    
+
+
                 </div>
 
                 <div class="p-4 bg-slate-50 border-t border-slate-200 text-xs text-slate-500 flex flex-wrap items-center justify-between gap-2">
