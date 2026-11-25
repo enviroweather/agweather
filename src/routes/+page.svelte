@@ -1,6 +1,5 @@
 <script lang="ts">
-	import heroImage from '$lib/assets/mi_cherry_orchard_andresen.JPG';
-	import { base } from '$app/paths';
+	import { base, asset } from '$app/paths';
 	import Mailicon from '$lib/icons/mailicon.svelte';
 </script>
 
@@ -15,7 +14,7 @@
 		<div class="lg:col-span-8">
 			<div class="mb-8 max-w-2xl overflow-hidden rounded-xl shadow-lg border border-emerald-800">
 				<img
-					src={heroImage}
+					src={asset('/images/mi_cherry_orchard_andresen.JPG')}
 					alt="Michigan Cherry Orchard by Jeff Andresen"
 					class="w-full h-auto object-cover"
 				/>

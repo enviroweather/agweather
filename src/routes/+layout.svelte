@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.ico';
+	import { asset } from '$app/paths';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { page } from '$app/state';
@@ -35,7 +35,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" href={asset('/favicon.ico')} />
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta
