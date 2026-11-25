@@ -5,7 +5,7 @@ Geography, Environment, and Spatial Sciences.  It is designed based on MSU web
 branding and accessibility standards (to the best of our ability)
 
 This code will 'build' a website in the `/build` folder.   See below for how to 
-deploy it.  
+build and deploy it, but the end product is https://github.com/enviroweather/agweather-build
 
 ## Tech
 
@@ -88,6 +88,17 @@ BASE_PATH=/agweather pnpm run build
 ```
 
 The forecast page requests same-origin data from `api/forecast-proxy.php?station=klan`, so no CORS configuration is required between the browser and the PHP script. Static-only preview commands do not execute PHP; test the generated `build/` directory with a local Apache/PHP server when validating forecasts.
+
+## Editing
+
+This is a Svelte site that uses reuseable components, found in /src/lib/components. Currently there 
+are only the header, nav and footer.  The rest of the page is only HTML and a little javascript. 
+
+The Theme of the page is taken from https://github.com/billspat/Unofficial-MSU-Website-Template , 
+a build is in https://billspat.github.io/Unofficial-MSU-Website-Template/
+
+This site uses only a handful of design elements from that theme, but when adding more look for 
+examples from that theme. 
 
 ## Note
 
