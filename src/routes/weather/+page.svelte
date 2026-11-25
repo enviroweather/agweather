@@ -133,7 +133,7 @@
 					<p class="text-xs text-slate-600 mb-4">
 						State Climatologist for Michigan and Professor at MSU's Department of Geography, Environment, and Spatial Sciences.
 					</p>
-					<a href={`${base}/andresen/`} class="btn btn-sm btn-outline border-msu-green text-msu-green hover:bg-msu-green hover:text-white w-full font-semibold">
+					<a href="https://geo.msu.edu/directory/andresen-jeffrey.html" class="btn btn-sm btn-outline border-msu-green text-msu-green hover:bg-msu-green hover:text-white w-full font-semibold">
 						Faculty Profile &rarr;
 					</a>
 				</div>
