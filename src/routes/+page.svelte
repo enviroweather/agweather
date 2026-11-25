@@ -1,6 +1,7 @@
 <script lang="ts">
 	import heroImage from '$lib/assets/mi_cherry_orchard_andresen.JPG';
 	import { base } from '$app/paths';
+	import Mailicon from '$lib/icons/mailicon.svelte';
 </script>
 
 <!-- HERO SECTION -->
@@ -35,17 +36,30 @@
 		<!-- Quick Info Panel -->
 		<div class="lg:col-span-4 bg-emerald-950/70 backdrop-blur border border-emerald-500/30 p-6 rounded-xl text-white space-y-4">
 			<h2 class="text-xl font-bold text-white border-b border-emerald-800 pb-2">
-				Agricultural Weather Office
+				Dr. Jeff Andresen 
 			</h2>
 			<p class="text-sm text-emerald-100 leading-relaxed">
-				Led by <strong>Dr. Jeff Andresen</strong>, Professor of Meteorology/Climatology and State Climatologist for Michigan. Providing climatological guidance, crop weather risk assessment, and integrated weather tools.
+				Professor of meteorology/climatology, <br/>
+				Department of Geography, Environment, and Spatial Sciences
+			</p>
+			<p class="text-sm text-emerald-100 leading-relaxed">
+				State Meteorologist
+			</p>
+			<p class="text-sm text-emerald-100 leading-relaxed">
+				Geography Bldg rm 236A, <br/>
+				673 Auditorium Road, East Lansing, MI 48824
 			</p>
 			<div class="pt-2">
-				<a
-					href={`${base}/andresen/`}
+				<a href="mailto:andresen@msu.edu" class="btn btn-sm btn-outline border-slate-300 text-slate-700 bg-slate-100">
+					<Mailicon /> andresen@msu.edu
+				</a>
+			</div>
+			<p class="text-sm text-emerald-100 leading-relaxed"></p>
+			<div class="pt-2">
+				<a href="https://geo.msu.edu/directory/andresen-jeffrey.html"
 					class="text-xs font-bold text-emerald-300 hover:text-white underline inline-flex items-center gap-1"
 				>
-					Learn more about Dr. Andresen &rarr;
+					Department Bio Page &rarr;
 				</a>
 			</div>
 		</div>
@@ -62,14 +76,7 @@
 						class="w-12 h-12 rounded-lg bg-emerald-100 text-msu-green flex items-center justify-center font-bold mb-4"
 						aria-hidden="true"
 					>
-						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-							></path>
-						</svg>
+
 					</div>
 					<h2 class="card-title text-xl font-bold text-msu-dark">1. Enviroweather</h2>
 					<p class="text-slate-600 text-sm leading-relaxed mt-2">

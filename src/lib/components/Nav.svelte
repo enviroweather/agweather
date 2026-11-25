@@ -9,7 +9,6 @@
 
 	const navItems: NavItem[] = [
 		{ href: '/', label: 'Home' },
-		{ href: '/andresen/', label: 'Dr. Jeff Andresen' },
 		{ href: '/forecasts/', label: 'Forecasts' },
 		{ href: '/weather/', label: 'Weather Resources' },
 		{ href: '/articles/', label: 'Articles' }
