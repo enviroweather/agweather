@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { normalizeStationCode, getMawnDataUrl, findStation } from './forecast-stations';
+import { normalizeStationCode, getRawDataUrl, findStation } from './forecast-stations';
 
-describe('MAWN Forecast Stations Helper', () => {
+describe('NBM Forecast Stations Helper', () => {
 	it('normalizes various station code inputs correctly', () => {
 		expect(normalizeStationCode('klan')).toBe('klan');
 		expect(normalizeStationCode('KLAN')).toBe('klan');
@@ -14,10 +14,10 @@ describe('MAWN Forecast Stations Helper', () => {
 	});
 
 	it('constructs correct upstream MAWN data URLs', () => {
-		expect(getMawnDataUrl('klan')).toBe(
+		expect(getRawDataUrl('klan')).toBe(
 			'https://mawn.geo.msu.edu/rawdata/legacy/fcsts/nbmnbs/data/fous16klan.json'
 		);
-		expect(getMawnDataUrl('LAN')).toBe(
+		expect(getRawDataUrl('LAN')).toBe(
 			'https://mawn.geo.msu.edu/rawdata/legacy/fcsts/nbmnbs/data/fous16klan.json'
 		);
 	});

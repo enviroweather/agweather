@@ -143,13 +143,13 @@
             <div class="flex flex-wrap items-center justify-between gap-4">
                 <div>
                     <span class="badge bg-emerald-800 text-emerald-200 border-none font-bold text-xs uppercase tracking-wider mb-2">
-                        MAWN / NBM 60-Hour Guidance
+                        NBM 60-Hour Guidance
                     </span>
                     <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-                        Agricultural Forecast Reports
+                        Weather Forecast Summaries
                     </h1>
                     <p class="text-slate-200 text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">
-                        60-hour point forecast guidance from the National Blend of Models (NBM/NBS), processed for Michigan Automated Weather Network (MAWN) stations.
+                        60-hour point forecast guidance from the National Blend of Models (NBM/NBS), from NWS Stations in Michigan.
                     </p>
                 </div>
 
@@ -200,7 +200,7 @@
                     <h2 class="font-bold">Unable to Load Forecast Data</h2>
                     <p class="text-sm">{fetchError}</p>
                     <p class="text-xs text-slate-600 mt-1">
-                        Please choose another station from the dropdown above, or verify network connectivity to the MAWN data server.
+                        Please choose another station from the dropdown above, or verify network connectivity to the report server.
                     </p>
                 </div>
             </div>
@@ -250,7 +250,7 @@
                     <div class="text-xs font-semibold text-slate-800 mt-1">
                         {formatInitializedAt(forecast.initialized_at)}
                     </div>
-                    <div class="text-[11px] text-slate-500 mt-0.5">Source: NBM / MAWN Server</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">Source: <a href="https://vlab.noaa.gov/web/mdl/nbm">National Blend of Models</a></div>
                 </div>
 
                 <!-- PLAIN TEXT LINK -->
@@ -267,7 +267,7 @@
                             Formatted plain-text report &rarr;
                         </a>
                     </div>
-                    <div class="text-[11px] text-slate-500 mt-0.5">MAWN Server</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">Enivorweather/MAWN</div>
                 </div>
 
                 <!-- JSON LINK -->
@@ -284,13 +284,13 @@
                             View Data file (JSON format) &rarr;
                         </a>
                     </div>
-                    <div class="text-[11px] text-slate-500 mt-0.5">PHP proxy / MAWN</div>
+                    <!-- <div class="text-[11px] text-slate-500 mt-0.5">...</div> -->
                 </div>
 
 
             </div>
 
-<!--        FORECAST headers -->
+            <!-- FORECAST headers -->
             <section aria-labelledby="forecast-table-heading" class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
                 <div class="p-4 sm:p-6 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>

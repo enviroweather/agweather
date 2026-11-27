@@ -32,7 +32,7 @@ export function normalizeStationCode(input: string): string {
 /**
  * Constructs the full MAWN upstream URL for a given station code.
  */
-export function getMawnDataUrl(stationCode: string): string {
+export function getRawDataUrl(stationCode: string): string {
 	const code = normalizeStationCode(stationCode);
 	return `https://mawn.geo.msu.edu/rawdata/legacy/fcsts/nbmnbs/data/fous16${code}.json`;
 }
@@ -40,7 +40,7 @@ export function getMawnDataUrl(stationCode: string): string {
 /**
  * Curated list of Michigan weather stations available in the MAWN NBM/NBS forecast repository.
  */
-export const MAWN_STATIONS: ForecastStation[] = [
+export const NWS_STATIONS: ForecastStation[] = [
 	// Mid-Michigan / Central
 	{ code: 'klan', name: 'Lansing (Capital City Airport / MSU)', region: 'Central Michigan' },
 	{ code: 'kjxn', name: 'Jackson (Reynolds Field)', region: 'Central Michigan' },
@@ -100,5 +100,5 @@ export const MAWN_STATIONS: ForecastStation[] = [
 
 export function findStation(code: string): ForecastStation | undefined {
 	const normalized = normalizeStationCode(code);
-	return MAWN_STATIONS.find((s) => s.code.toLowerCase() === normalized);
+	return NWS_STATIONS.find((s) => s.code.toLowerCase() === normalized);
 }
